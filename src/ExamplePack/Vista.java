@@ -22,7 +22,7 @@ public class Vista{
     private JPanel panel5;
     private CardLayout card;
     private JButton bot1;
-
+    private JDialog AcercaDe;
     public Vista(){
         ventana = new JFrame("Laboratorio 2");
         ventana.setSize(640,400);
@@ -69,10 +69,18 @@ public class Vista{
         JLabel txtAD2 = new JLabel("Andres Leon"+" "+"Idanny Huertas"+" "+"Jennifer Quiros");
         panel3.add(txtAD);
         panel3.add(txtAD2);
+        AcercaDe = new JDialog();
+        AcercaDe.setSize(600,600);
+        AcercaDe.setLocationRelativeTo(null);
+        AcercaDe.setTitle("Acerca De");
+        AcercaDe.setLayout(new GridLayout(1,0));
+        AcercaDe.add(panel3);
+//        AcercaDe.add(txtAD);
+//        AcercaDe.add(txtAD2);
         item3.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
-              card.show(ventana.getContentPane(),"AcercaDe");
+              AcercaDe.setVisible(true);
             }
         });
 
@@ -82,9 +90,9 @@ public class Vista{
         JLabel txt2 = new JLabel("Laboratorio 2");
         txt2.setSize(100,100);
         main.add(txt2);
+
         ventana.add(main,"main");
         ventana.add(panel1,"Inicio");
-        ventana.add(panel3,"AcercaDe");
         ventana.setJMenuBar(barra);
         card.show(ventana.getContentPane(),"main");
         ventana.setVisible(true);
