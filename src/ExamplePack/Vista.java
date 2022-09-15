@@ -1,9 +1,6 @@
 package ExamplePack;
 
-import com.sun.tools.javac.Main;
-
 import javax.swing.*;
-import javax.swing.event.InternalFrameEvent;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -23,12 +20,14 @@ public class Vista{
     private CardLayout card;
     private JButton bot1;
     private JDialog AcercaDe;
+    private JComboBox ejs;
+    EjGridBagLO Ej1 = new EjGridBagLO();
+
     public Vista(){
         ventana = new JFrame("Laboratorio 2");
         ventana.setSize(640,400);
         card = new CardLayout();
         ventana.setLayout(card);
-
         menu = new JMenu("Menu");
         JMenuBar barra = new JMenuBar();
         barra.setSize(80,20);
@@ -61,6 +60,37 @@ public class Vista{
         });
         panel1.add(bot1);
 
+        JButton bt1 = new JButton("BorderLayout");
+        JButton bt2 = new JButton("GridLayout");
+        JButton bt3 = new JButton("FlowLayout");
+        JButton bt4 = new JButton("GridBabLayout");
+        JButton bt5 = new JButton("CardLayout");
+        panel2 = new JPanel();
+        panel2.setSize(300,300);
+        panel2.setLayout(new GridLayout(0,6));
+        JLabel ejems = new JLabel("Ejemplos de: ");
+        ejems.setForeground(Color.RED);
+        ejems.setFont(new Font("Castellar",2,11));
+        ejems.setSize(80,30);
+        panel2.add(ejems);
+        panel2.add(bt1);
+        panel2.add(bt2);
+        panel2.add(bt3);
+        panel2.add(bt4);
+        panel2.add(bt5);
+        item2.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                card.show(ventana.getContentPane(),"Ejemplos");
+            }
+        });
+        bt4.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Ej1.setVisible(true);
+            }
+        });
+
 
         panel3 = new JPanel();
         panel3.setLayout(new GridLayout(1,0));
@@ -91,6 +121,8 @@ public class Vista{
         txt2.setSize(100,100);
         main.add(txt2);
 
+
+        ventana.add(panel2,"Ejemplos");
         ventana.add(main,"main");
         ventana.add(panel1,"Inicio");
         ventana.setJMenuBar(barra);
