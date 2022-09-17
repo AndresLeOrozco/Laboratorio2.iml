@@ -1,10 +1,14 @@
 package ExamplePack;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 public class Vista{
     private JFrame ventana;
@@ -54,8 +58,8 @@ public class Vista{
         bot1.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
-               WindowEvent closeWindow = new WindowEvent(ventana,WindowEvent.WINDOW_CLOSING);
-               Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(closeWindow);
+                WindowEvent closeWindow = new WindowEvent(ventana,WindowEvent.WINDOW_CLOSING);
+                Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(closeWindow);
             }
         });
         panel1.add(bot1);
@@ -84,13 +88,20 @@ public class Vista{
                 card.show(ventana.getContentPane(),"Ejemplos");
             }
         });
+        bt1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {CreaBorderLayout().setVisible(true);}
+        });
+        bt2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {CreaGridLayout().setVisible(true);}
+        });
         bt4.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Ej1.setVisible(true);
             }
         });
-
 
         panel3 = new JPanel();
         panel3.setLayout(new GridLayout(1,0));
@@ -110,7 +121,7 @@ public class Vista{
         item3.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
-              AcercaDe.setVisible(true);
+                AcercaDe.setVisible(true);
             }
         });
 
@@ -131,4 +142,41 @@ public class Vista{
         ventana.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 
+    public JFrame CreaBorderLayout(){
+        JTextArea Area_Central =new JTextArea("Comentario");
+        JButton sur =new JButton();
+        sur.setText("ENVIAR");
+        JLabel norte = new JLabel("Deje su comentario:");
+        JTextField Text = new JTextField();
+
+        Text.setText("Sur");
+
+        JLabel  ima =new JLabel();
+
+
+        JLabel  ima2 =new JLabel();
+        ImageIcon img2 =new ImageIcon("imagenes/java.png");
+        BufferedImage b3 = new BufferedImage(300,300, BufferedImage.TRANSLUCENT);
+        Graphics g2 = b3.createGraphics();
+        g2.drawImage(img2.getImage(),0,0,300,300,null);
+        g2.dispose();;
+        img2 = new ImageIcon(b3);
+        ima2.setIcon(img2);
+        JLabel  ima3 =new JLabel();
+        ImageIcon img3 =new ImageIcon("imagenes/java.png");
+        BufferedImage b4 = new BufferedImage(300,300, BufferedImage.TRANSLUCENT);
+        Graphics g3 = b4.createGraphics();
+        g3.drawImage(img2.getImage(),0,0,300,300,null);
+        g3.dispose();;
+        img3 = new ImageIcon(b3);
+        ima3.setIcon(img3);
+
+
+        return new Borde(Area_Central,sur,norte,ima2,ima3);
+
+    }
+    public JFrame CreaGridLayout(){
+        return new GridLO();
+
+    }
 }
