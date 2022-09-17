@@ -26,6 +26,8 @@ public class Vista{
     private JDialog AcercaDe;
     private JComboBox ejs;
     EjGridBagLO Ej1 = new EjGridBagLO();
+    EjCardLO EjCl1 = new EjCardLO();
+    EjFlowLO EjFl1 = new EjFlowLO();
 
     public Vista(){
         ventana = new JFrame("Laboratorio 2");
@@ -96,6 +98,11 @@ public class Vista{
             @Override
             public void actionPerformed(ActionEvent e) {CreaGridLayout().setVisible(true);}
         });
+        bt3.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {EjFl1.setVisible(true);}
+        });
+
         bt4.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -103,11 +110,16 @@ public class Vista{
             }
         });
 
+        bt5.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {EjCl1.setVisible(true);}
+        });
+
         panel3 = new JPanel();
         panel3.setLayout(new GridLayout(1,0));
         JLabel txtAD = new JLabel("Integrantes de Grupo");
         txtAD.setForeground(Color.blue);
-        JLabel txtAD2 = new JLabel("Andres Leon"+" "+"Idanny Huertas"+" "+"Jennifer Quiros");
+        JLabel txtAD2 = new JLabel("Andres Leon, "+" "+"Idanny Huertas, "+" "+"Jennifer Quiros");
         panel3.add(txtAD);
         panel3.add(txtAD2);
         AcercaDe = new JDialog();
